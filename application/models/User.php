@@ -3,11 +3,13 @@
 	 
 	 class User extends CI_Model
 	 {
-	 	public function login($username,$password)
+	 	// $this->db->where('username', $username);
+   //    	$query = $this->db->get($this->table)->row();
+	 	public function login($email,$password)
 	 	{
-	 		$this->db->select('id,username,password,level');
-	 		$this->db->from('user');
-	 		$this->db->where('username',$username);
+	 		$this->db->select('*');
+	 		$this->db->from('users');
+	 		$this->db->where('email',$email);
 	 		$this->db->where('password', MD5($password));
 	 		$query = $this->db->get();
 	 		if($query->num_rows()==1){
@@ -23,10 +25,11 @@
 	 	{
 	 		$data = array(
 	 			'username' => $this->input->post('username'),
+	 			'email'	=> $this->input->post('email'),
 	 			'password' => md5($this->input->post('password')),
-	 			'level' => $this->input->post('level')
+	 			'status' => $this->input='user'
 	 		);
-	 		$this->db->insert('user',$data);
+	 		$this->db->insert('users',$data);
 	 	}
 	 }
 

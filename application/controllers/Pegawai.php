@@ -1,5 +1,4 @@
 <?php
-ob_start();
  defined('BASEPATH') OR exit('No direct script access allowed');
  
  class Pegawai extends CI_Controller {
@@ -9,13 +8,13 @@ ob_start();
  		parent::__construct();
  		if($this->session->userdata('logged_in')){
  			$session_data = $this->session->userdata('logged_in');
- 			$data['username'] = $session_data['username'];
- 			$data['level'] = $session_data['level'];
+ 			$data['email'] = $session_data['email'];
+ 			$data['status'] = $session_data['status'];
  			$current_controller = $this->router->fetch_class();
  			$this->load->library('acl');
  			if (! $this->acl->is_public($current_controller))
  			{
- 				if (! $this->acl->is_allowed($current_controller, $data['level']))
+ 				if (! $this->acl->is_allowed($current_controller, $data['status']))
  				{
  					redirect('login/logout','refresh');
  				}
@@ -28,7 +27,7 @@ ob_start();
  	public function Index()
  	{
  		$session_data=$this->session->userdata('logged_in');
- 		$data['username']=$session_data['username'];
+ 		$data['email']=$session_data['email'];
  		$this->load->view('home',$data);
  	}
  

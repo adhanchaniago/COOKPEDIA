@@ -1,93 +1,114 @@
-<!DOCTYPE html>
-<html lang="">
+<!doctype html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Feerdiana</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Cookpedia</title>
+    
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/bootstrap.min.css">
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200|Skranji" rel="stylesheet">
+    <!-- End of Google font -->
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <style>
+      html,
+    body {
+      height: 100%;
+    }
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    body {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-align: center;
+      align-items: center;
+      padding-top: 40px;
+      padding-bottom: 40px;
+      padding-left: 100px;
+      background-image: url('../assets/imgdesign/bg-login.jpg');
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+    }
+
+    #logo {
+      color: #F71404;
+      font-size: 62px;
+      font-family: 'Skranji', cursive;
+      text-align: center;
+      text-shadow: 4px 4px #000;
+    }
+
+    #txt {
+      font-size: 50px;
+      font-family: 'Dosis', sans-serif;
+    }
+
+    .form-signin {
+      width: 100%;
+      max-width: 330px;
+      padding: 15px;
+      margin: auto;
+    }
+    .form-signin .checkbox {
+      font-weight: 400;
+    }
+    .form-signin .form-control {
+      position: relative;
+      box-sizing: border-box;
+      height: auto;
+      padding: 10px;
+      font-size: 16px;
+    }
+    .form-signin .form-control:focus {
+      z-index: 2;
+    }
+    .form-signin input[type="email"] {
+      margin-bottom: -1px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    .form-signin input[type="password"] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    .btn-transparent {
+      background: transparent;
+      color: #F2F2F2;
+      -webkit-transition: background .2s ease-in-out, border .2s ease-in-out;
+      -moz-transition: background .2s ease-in-out, border .2s ease-in-out;
+      -o-transition: background .2s ease-in-out, border .2s ease-in-out;
+      transition: background .2s ease-in-out, border .2s ease-in-out;
+    }
+
+    .btn-transparent:hover {
+        color: white;
+        background-color: #007FFF;
+    }
+    </style>
+
   </head>
-  <body>
 
+  <body class="text-center">
+    <form class="form-signin" method="post" action="<?php echo base_url('index.php/Login/cekLogin') ?>">
+      <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+      <div id="logo"> 
+        Cookpedia
+      </div>
 
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <nav class="navbar navbar-default" role="navigation">
-          <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#">Authentikasi Multilevel</a>
-            </div>
-        
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-              <!-- <ul class="nav navbar-nav ">
-                <li class="active"> <a href="<?= base_url('index.php'); ?>">Login</a></li>
-              </ul> -->
-              <ul class="nav navbar-nav navbar-right ">
-                 <li ><a href="#"><i class="glyphicon glyphicon-user"></i></a></li>
-              </ul>
-            </div><!-- /.navbar-collapse -->
-              
-        </nav>
-<div class="container text-center">
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <?php echo form_open('login/cekLogin') ?>
-    <div class="form-group">
-      <legend>Log in </legend>
-    </div>
-
-    <?php echo validation_errors(); ?>
-    <div class="form-group">
-      <label for="">Username</label>
-      <input type="text" class="form-control" id="username" name="username" placeholder="Input field">
-
-    </div>
-
-    <div class="form-group">
-      <label for="">Password</label>
-      <input type="Password" class="form-control" id="password" name="password" placeholder="Input field">
-    </div>
-    <div class="form-group">
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-    <div class="form-group">
-    <a href="<?php echo base_url('index.php/Login/register') ?>" >Belum Memiliki Akun?</a>
-    </div>
-  </div>
-</div>
-
-<style>
-  .form-group {
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
-  margin: auto;
-}
-.form-group .checkbox {
-  font-weight: 400;
-}
-.form-group {
-  position: relative;
-  box-sizing: border-box;
-  height: auto;
-  padding: 10px;
-  font-size: 16px;
-}
-
-</style>
+      <div id="txt">
+        <?php echo validation_errors(); ?>
+        <label for="email" class="sr-only">Email</label>
+        <input type="email" name="email" id="email" class="form-control" placeholder="Email" autofocus>
+        <label for="password" class="sr-only">Password</label>
+        <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+        <button class="btn btn-lg btn-transparent btn-block" type="submit">Sign in</button>
+        <a href="<?php echo base_url('index.php/Login/register') ?>" class="btn btn-lg btn-transparent btn-block">Sign up</a> 
+      </div>
+    </form>
+  </body>
+</html>

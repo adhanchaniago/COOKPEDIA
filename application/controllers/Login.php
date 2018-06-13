@@ -1,21 +1,21 @@
 <?php
-ob_start();
  defined('BASEPATH') OR exit('No direct script access allowed');
  
  class Login extends CI_Controller {
 
  	public function index()
  	{
- 		$this->load->view('Login_view');
+ 		$this->load->view('login_view');
  	}
  
  	public function cekLogin()
  	{
  		$this->load->library('form_validation');
- 		$this->form_validation->set_rules('username','Username','trim|required');
+ 		$this->form_validation->set_rules('email','Email','trim|required');
  		$this->form_validation->set_rules('password','Password','trim|required|callback_cekDb');
  		if ($this->form_validation->run() == FALSE) {
- 			$this->load->view('Login_view');
+ 			echo '<script>alert("Email atau Password Salah")</script>';
+ 			redirect('Login','refresh');
  		} else {
  			redirect('Home','refresh');
  		}
@@ -26,7 +26,8 @@ ob_start();
  	{
  		$this->load->library('form_validation');
 
- 		$this->form_validation->set_rules('username','Username','trim|required');
+ 		$this->form_validation->set_rules('email','Username','trim|required');
+ 		$this->form_validation->set_rules('email','Email','trim|required');
  		$this->form_validation->set_rules('password','Password','trim|required');
  		if ($this->form_validation->run() == FALSE) {
  			$this->load->view('register_view');
@@ -39,24 +40,33 @@ ob_start();
  	
  	public function cekDb($password)
  	{
- 		$this->load->model('User');
- 		$username = $this->input->post('username');
- 		$result = $this->User->login($username,$password);
+ 		$this->load->model('user');
+ 		$email = $this->input->post('email');
+ 		$result = $this->user->login($email,$password);
  		if($result){
  			$sess_array = array();
  			foreach ($result as $row) {
  				$sess_array = array(
- 					'id'=>$row->id,
- 					'username'=> $row->username,
- 					'level' => $row->level
+ 					'id' => $row->id,
+ 					'email' => $row->email,
+ 					'username' => $row->username,
+ 					'password' => $row->password,
+ 					'gender' => $row->gender,
+ 					'phone' => $row->phone,
+ 					'status' => $row->status,
+ 					'photo' => $row->photo,
+ 					'last_access' => $row->last_access
  				);
  				$this->session->set_userdata('logged_in',$sess_array);
  			}
+
  			return true;
- 		}else{
- 			$this->form_validation->set_message('cekDb',"Login Gagal Username dan Password Tidak Valid");
+
+ 		}
+ 		else{
  			return false;
  		}
+
  	}
 
  	public function logout()
