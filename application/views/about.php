@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Cookpedia | Home</title>
+    <title>Cookpedia | About</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../assets/dist/css/bootstrap.min.css">
@@ -14,7 +14,7 @@
 
     <style>
       #txt {
-        font-size: 30px;
+        font-size: 20px;
         font-family: 'Encode Sans Condensed', sans-serif;
         letter-spacing: 0.5px;
         line-height: 1.5s;
@@ -41,8 +41,8 @@
         <span class="navbar-toggler-icon"></span> </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto" id="loto">
-              <li><a class="nav-link active" href="<?php echo site_url()?>/pegawai">What's New<span class="sr-only">(current)</span></a></li>
-              <li><a class="nav-link" href="<?php echo site_url()?>/about">About<span class="sr-only">(current)</span></a></li>
+              <li><a class="nav-link" href="<?php echo site_url()?>/pegawai">What's New<span class="sr-only">(current)</span></a></li>
+              <li><a class="nav-link active" href="<?php echo site_url()?>/about">About<span class="sr-only">(current)</span></a></li>
           </ul>
 
           <div class="dropdown nav navbar-nav navbar-right">
@@ -66,11 +66,29 @@
     </div>
     
     <div id="txt">
-      <div class="container" style="margin-top:70px">
-        <div class="display-1" style="text-align: center;">
-          COMING SOON!
+      <div class="container" style="margin-top:70px; text-align: center;">
+        <div class="display-4" style="text-align: center;">
+          About Us
         </div>
-      </div>     
+        <hr class="m-sm-2">
+        <div">
+          Cookpedia is a tech company building a community platform for people to share recipe ideas and cooking tips. Because we believe that cooking is the key to a happier and healthier life for people, communities and the planet. <br><br>
+          The choices we make shape our world. And when we cook, the choices we make have an impact on ourselves, the people we cook for, the growers and producers we buy from and the wider environment. <br><br>
+          By solving the issues related to everyday cooking and helping more people to cook, we believe we can help build a better world.
+        </div>
+      </div>
+      <hr class="ml-xl-2">
+      <div class="container" style="text-align: center; padding-left: 30%; padding-right: 30%;">
+            <div class="card" style="background-color: #55FF55">
+              <div class="card-block">
+                <h4 class="card-title"><div class="display-4">The Team</div></h4>
+                <p class="card-text">Ahmad Habibul Ulum (1641720144) <br>
+                                    Ferdiana Rochmatul Chusna (1641720182) <br><br></p>
+              </div>
+            </div>
+        
+        
+      </div>
     </div>  
         
 

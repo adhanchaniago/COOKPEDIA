@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Cookpedia | Home</title>
+    <title>Cookpedia | Settings</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../assets/dist/css/bootstrap.min.css">
@@ -41,7 +41,7 @@
         <span class="navbar-toggler-icon"></span> </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto" id="loto">
-              <li><a class="nav-link active" href="<?php echo site_url()?>/pegawai">What's New<span class="sr-only">(current)</span></a></li>
+              <li><a class="nav-link" href="<?php echo site_url()?>/pegawai">What's New<span class="sr-only">(current)</span></a></li>
               <li><a class="nav-link" href="<?php echo site_url()?>/about">About<span class="sr-only">(current)</span></a></li>
           </ul>
 
@@ -67,9 +67,36 @@
     
     <div id="txt">
       <div class="container" style="margin-top:70px">
-        <div class="display-1" style="text-align: center;">
-          COMING SOON!
-        </div>
+        <div class="row">
+          <div class="col-sm-4" style="text-align: center;">
+            <img src="../assets/imgdesign/user/avatar1.png" style="width: 350px">
+            <p class="text-capitalize"> <?php echo $this->session->userdata('logged_in')['username']; ?> 
+            <br>
+            <kbd><?php echo $this->session->userdata('logged_in')['status']; ?></kbd></p>
+          </div>
+          <div class="col-sm-8">
+            <div class="jumbotron">
+              <h1>Data Diri</h1>
+              <p class="lead">
+                <?php 
+                  echo 'Selamat Datang, '.$this->session->userdata('logged_in')['username'];
+                  echo "<br><br>";
+                  echo 'Nama : '.$this->session->userdata('logged_in')['username']; 
+                  echo "<br>";
+                  echo 'Email : '.$this->session->userdata('logged_in')['email'];
+                  echo "<br>";
+                  echo 'Gender : '.$this->session->userdata('logged_in')['gender'];
+                  echo "<br>";
+                  echo 'Phone : '.$this->session->userdata('logged_in')['phone'];
+                  echo "<br>";
+                  echo 'Status : '.$this->session->userdata('logged_in')['status']; 
+                  echo "<br>";
+                  echo 'Last Access : '.$this->session->userdata('logged_in')['last_access'];
+                ?>
+              </p>
+            </div> <!-- End of jumbotron -->    
+          </div>  
+        </div> <!-- End of class row -->  
       </div>     
     </div>  
         
