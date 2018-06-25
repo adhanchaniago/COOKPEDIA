@@ -41,7 +41,7 @@
         <span class="navbar-toggler-icon"></span> </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto" id="loto">
-              <li><a class="nav-link" href="<?php echo site_url()?>/pegawai">What's New<span class="sr-only">(current)</span></a></li>
+              <li><a class="nav-link active" href="<?php echo site_url()?>/pegawai">What's New<span class="sr-only">(current)</span></a></li>
               <li><a class="nav-link" href="<?php echo site_url()?>/about">About<span class="sr-only">(current)</span></a></li>
           </ul>
 
@@ -51,10 +51,10 @@
                 <?php echo $this->session->userdata('logged_in')['username']; ?><span class="sr-only">(current)</span>
             </button>
             <div class="dropdown-menu" id="loto">
-              <a class="dropdown-item disabled" href="#">Coming Soon</a>
-              <a class="dropdown-item" href="<?php echo site_url()?>/dashboardAdmin">
+              <a class="dropdown-item" href="<?php echo site_url()?>/grafik">Coming Soon</a>
+              <a class="dropdown-item">
                 <?php if($this->session->userdata('logged_in')['status'] == 'admin') { 
-                  echo '<li><a class="nav-link" href="<?php echo site_url()?>/dashboard"><font color="#6611AA"> 
+                  echo '<li><a class="nav-link" href="site_url()/grafik"><font color="#6611AA"> 
                         <b>Dashboard Admin</b></font><span class="sr-only">(current)</span></a>'; } ?>
               </a>
               <a class="dropdown-item" href="<?php echo site_url()?>/settings">Settings</a>
