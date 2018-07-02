@@ -64,15 +64,51 @@
         </div>
       </nav> <!-- End of Navbar -->
     </div>
-    
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grafik</title>
+ 
+    <?php
+        foreach($data as $data){
+            $username[] = $data->username;
+            $total_access[] = (float) $data->total_access;
+        }
+    ?>
+</head>
+<body>
+
     <div id="txt">
       <div class="container" style="margin-top:70px">
-        <div class="display-1" style="text-align: center;">
-          COMING SOON!
-        </div>
+        <canvas id="canvas" width="1000" height="280"></canvas>
+ 
+        <!--Load chart js-->
+        <script type="text/javascript" src="<?php echo base_url().'assets/chartjs/chart.min.js'?>"></script>
+        <script>
+     
+                var lineChartData = {
+                    labels : <?php echo json_encode($username);?>,
+                    datasets : [
+                         
+                        {
+                            fillColor: "rgba(60,141,188,0.9)",
+                            strokeColor: "rgba(60,141,188,0.8)",
+                            pointColor: "#3b8bba",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(152,235,239,1)",
+                            data : <?php echo json_encode($total_access);?>
+                        }
+     
+                    ]
+                     
+                }
+     
+            var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData);     
+        </script>
       </div>     
-    </div>  
-        
+    </div> 
+ 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
