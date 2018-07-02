@@ -75,12 +75,24 @@
             <kbd><?php echo $this->session->userdata('logged_in')['status']; ?></kbd></p>
           </div>
           <div class="col-sm-8">
-            <div class="jumbotron">
-              <h1>Data Diri</h1>
-              <p class="lead">
-                <?php 
-                  echo 'Selamat Datang, '.$this->session->userdata('logged_in')['username'];
-                  echo "<br><br>";
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#details">Details</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#recipe">Recipe</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#chgpass">Change Password</a>
+              </li>
+            </ul> <!-- End of Nav tabs -->
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div id="details" class="container tab-pane active"><br>
+                <p class="lead">
+                <?php
                   echo 'Nama : '.$this->session->userdata('logged_in')['username']; 
                   echo "<br>";
                   echo 'Email : '.$this->session->userdata('logged_in')['email'];
@@ -94,7 +106,32 @@
                   echo 'Last Access : '.$this->session->userdata('logged_in')['last_access'];
                 ?>
               </p>
-            </div> <!-- End of jumbotron -->    
+              <a href="<?php echo site_url()?>/settings/editUser" class="btn btn-block btn-outline-info">Edit</a>
+              </div>
+              <div id="recipe" class="container tab-pane fade"><br>
+                <h3>Menu 1</h3>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+              <div id="chgpass" class="container tab-pane fade"><br>
+                Silahkan Masukkan Password Lama dan Password Baru Anda..
+                <p class="lead">
+                  <form class="form-signin" method="post" action="<?php echo base_url('index.php/Settings/gantiPassword') ?>">
+                    <div id="txt">
+                      <?php echo validation_errors(); ?>
+                      <label for="old_password" class="sr-only">Old Password</label>
+                      <input type="password" name="old_password" id="old_password" class="form-control" placeholder="Old Password.." autofocus>
+                      <label for="new_password" class="sr-only">New Password</label>
+                      <input type="password" name="new_password" id="new_password" class="form-control" placeholder="New Password..">
+                      <label for="confirm_new_password" class="sr-only">Confirm Password</label>
+                      <input type="password" name="confirm_new_password" id="confirm_new_password" class="form-control" placeholder="Confirm New Password..">
+                      <button type="submit" class="btn btn-block btn-lg btn-outline-success">Change Password</button>
+                    </div>
+                  </form>
+                  <br>
+                </p>
+              </div>
+            </div> <!-- End of Tab panes -->
+    
           </div>  
         </div> <!-- End of class row -->  
       </div>     

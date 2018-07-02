@@ -20,7 +20,12 @@
 	 		
 	 	}
 	 
-	 	
+	 	public function getDataUser()
+		{
+			$query = $this->db->get("Users");
+			return $query->result_array();
+		}
+
 	 	public function insert()
 	 	{
 	 		$data = array(
@@ -30,6 +35,18 @@
 	 			'status' => $this->input='user'
 	 		);
 	 		$this->db->insert('users',$data);
+	 	}
+
+	 	public function editUser()
+	 	{
+	 		$id=$this->input->post('id');
+
+	 		$data = array(
+	 			'username' => $this->input->post('username'),
+	 			'email' => $this->input->post('email')
+	 		);
+	 		$this->db->where('id', $id);
+	 		$this->db->update('users',$data);
 	 	}
 	 }
 
