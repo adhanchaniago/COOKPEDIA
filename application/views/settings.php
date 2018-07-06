@@ -68,11 +68,15 @@
     <div id="txt">
       <div class="container" style="margin-top:70px">
         <div class="row">
-          <div class="col-sm-4" style="text-align: center;">
-            <img src="../assets/imgdesign/user/avatar1.png" style="width: 350px">
-            <p class="text-capitalize"> <?php echo $this->session->userdata('logged_in')['username']; ?> 
+          <div class="col-sm-4 text-capitalize" style="text-align: center;">
+            <!-- <img src="../assets/imgdesign/user/avatar1.png" style="width: 350px"> -->
+            <?php foreach ($userdt as $key => $value): 
+              if ($value['id'] == $this->session->userdata('logged_in')['id'] ) {  
+                  echo $value['username']; ?>  
+                  <img src="http://localhost/cookpedia/assets/uploads/<?php echo $value['photo']?>">
+              <?php } endforeach ?>
             <br>
-            <kbd><?php echo $this->session->userdata('logged_in')['status']; ?></kbd></p>
+            <kbd><?php echo $this->session->userdata('logged_in')['status']; ?></kbd>
           </div>
           <div class="col-sm-8">
             <!-- Nav tabs -->
@@ -92,21 +96,52 @@
             <div class="tab-content">
               <div id="details" class="container tab-pane active"><br>
                 <p class="lead">
-                <?php
-                  echo 'Nama : '.$this->session->userdata('logged_in')['username']; 
-                  echo "<br>";
-                  echo 'Email : '.$this->session->userdata('logged_in')['email'];
-                  echo "<br>";
-                  echo 'Gender : '.$this->session->userdata('logged_in')['gender'];
-                  echo "<br>";
-                  echo 'Phone : '.$this->session->userdata('logged_in')['phone'];
-                  echo "<br>";
-                  echo 'Status : '.$this->session->userdata('logged_in')['status']; 
-                  echo "<br>";
-                  echo 'Last Access : '.$this->session->userdata('logged_in')['last_access'];
-                ?>
-              </p>
-              <a href="<?php echo site_url()?>/settings/editUser" class="btn btn-block btn-outline-info">Edit</a>
+                  <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $this->session->userdata('logged_in')['id']?>" placeholder=" ">
+                <!-- Data From User -->
+                <table class="table table-hover table-inverse lead">
+                  <tbody>  
+                    <?php foreach ($userdt as $key => $value): 
+                      if ($value['id'] == $this->session->userdata('logged_in')['id'] ) {   
+                      ?>
+                    <tr>
+                      <td width="17%">Nama</td>
+                      <td width="1%">:</td>
+                      <td><?php echo $value['username']; ?></td>
+                    </tr>
+                    <tr>
+                      <td>Email</td>
+                      <td>:</td>
+                      <td><?php echo $value['email']; ?></td>
+                    </tr>
+                    <tr>
+                      <td>Gender</td>
+                      <td>:</td>
+                      <td><?php echo $value['gender']; ?></td>
+                    </tr>
+                    <tr>
+                      <td>Phone</td>
+                      <td>:</td>
+                      <td><?php echo $value['phone']; ?></td>
+                    </tr>
+                    <tr>
+                      <td>Status</td>
+                      <td>:</td>
+                      <td><?php echo $value['status']; ?></td>
+                    </tr>
+                    <tr>
+                      <td>Last Access</td>
+                      <td>:</td>
+                      <td><?php echo $value['last_access']; ?></td>
+                    </tr>
+                    <tr>
+                      <td colspan="3">
+                        <a href="<?php echo site_url()?>/settings/setUser/<?php echo $value['id']?>" class="btn btn-block btn-outline-info">Edit</a>
+                      </td>
+                    </tr>
+                    <?php } endforeach ?>
+                  </tbody>
+                </table>
+              
               </div>
               <div id="recipe" class="container tab-pane fade"><br>
                 <h3>Menu 1</h3>
@@ -115,7 +150,7 @@
               <div id="chgpass" class="container tab-pane fade"><br>
                 Silahkan Masukkan Password Lama dan Password Baru Anda..
                 <p class="lead">
-                  <form class="form-signin" method="post" action="<?php echo base_url('index.php/Settings/gantiPassword') ?>">
+                  <form class="form-signin" method="post" action="<?php echo base_url('index.php/Settings/changePassword') ?>">
                     <div id="txt">
                       <?php echo validation_errors(); ?>
                       <label for="old_password" class="sr-only">Old Password</label>

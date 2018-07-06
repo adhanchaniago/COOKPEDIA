@@ -26,6 +26,7 @@
 			return $query->result_array();
 		}
 
+
 	 	public function insert()
 	 	{
 	 		$data = array(
@@ -37,19 +38,45 @@
 	 		$this->db->insert('users',$data);
 	 	}
 
-	 	public function editUser()
+	 	//pending
+	 	public function changePassword($old_password)
 	 	{
-	 		$id=$this->input->post('id');
-
-	 		$data = array(
-	 			'username' => $this->input->post('username'),
-	 			'email' => $this->input->post('email')
-	 		);
-	 		$this->db->where('id', $id);
-	 		$this->db->update('users',$data);
+	 		
 	 	}
+
+		public function getUserbyId($id)
+		{
+			$this->db->where('id', $id);
+			$query = $this->db->get('users');
+			return $query->result();
+		}
+
+	 	public function setUserbyId($id)
+		{
+			$data = array(
+				'username' => $this->input->post('username'),
+				'email' => $this->input->post('email'),
+				'gender' => $this->input->post('gender'),
+				'phone' => $this->input->post('phone'),
+				'photo' => $this->upload->data('file_name'),
+
+			);
+			$this->db->where('id', $id);
+			$this->db->update('users', $data);
+		}
 	 }
 
+	 	// public function editUser()
+	 	// {
+	 	// 	$id=$this->input->post('id');
+
+	 	// 	$data = array(
+	 	// 		'username' => $this->input->post('username'),
+	 	// 		'email' => $this->input->post('email')
+	 	// 	);
+	 	// 	$this->db->where('id', $id);
+	 	// 	$this->db->update('users',$data);
+	 	// }
 	 
 	 /* End of file user.php */
 	 /* Location: ./application/models/user.php */ ?>
