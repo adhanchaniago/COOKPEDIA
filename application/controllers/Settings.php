@@ -10,15 +10,18 @@
  			$session_data = $this->session->userdata('logged_in');
  			$data['username'] = $session_data['username'];
  			$data['status'] = $session_data['status'];
- 			$current_controller = $this->router->fetch_class();
- 			$this->load->library('acl');
- 			if (! $this->acl->is_public($current_controller))
- 			{
- 				if (! $this->acl->is_allowed($current_controller, $data['status']))
- 				{
- 					redirect('pegawai','refresh');
- 				}
+ 			if(!$session_data['username']){
+ 				redirect('login','refresh');
  			}
+ 			// $current_controller = $this->router->fetch_class();
+ 			// $this->load->library('acl');
+ 			// if (! $this->acl->is_public($current_controller))
+ 			// {
+ 			// 	if (! $this->acl->is_allowed($current_controller, $data['status']))
+ 			// 	{
+ 			// 		redirect('pegawai','refresh');
+ 			// 	}
+ 			// }
  		}else{
  			redirect('login','refresh');
  		}
@@ -28,22 +31,36 @@
  	{
  		$session_data=$this->session->userdata('logged_in');
  		$this->load->model('user');
- 		$data['userdt'] = $this->user->getDataUser();
+ 		$data['value'] = $this->db->where('id', $this->session->userdata('logged_in')['id'])->get('users')->row_array();
  		$this->load->view('settings', $data);
  	}
- 	
+
  	// Pending
  	public function changePassword()
  	{
  		$this->load->library('form_validation');
- 		$this->form_validation->set_rules('oldpassword','Old Password','trim|required|callback_cekDb');
- 		$this->form_validation->set_rules('newpassword','New Password','trim|required');
+ 		$this->form_validation->set_rules('old_password','Old Password','trim|required');
+ 		$this->form_validation->set_rules('new_password','New Password','trim|required');
+ 		$this->form_validation->set_rules('confirm_new_password','New Password','trim|required');
  		if ($this->form_validation->run() == FALSE) {
- 			echo '<script>alert("Password Lama Salah")</script>';
- 			// redirect('Login','refresh');
+ 			$this->session->set_flashdata('error', validation_errors());
  		} else {
- 			redirect('Home','refresh');
+ 			if($this->input->post('new_password')==$this->input->post('confirm_new_password')){
+	 			$checkOldPass = $this->db->where('password',md5($this->input->post('old_password')))->get('users')->num_rows();
+	 			if($checkOldPass==0){
+	 				$this->session->set_flashdata('error', 'Password lama tidak sesuai');
+	 			}else{
+	 				$data = array(
+	 					'password' => md5($this->input->post('new_password')),
+	 				);
+	 				$this->db->where('id',$this->input->post('id_user'))->set($data)->update('users');
+	 				$this->session->set_flashdata('success', 'Password berhasil dirubah');
+	 			}
+ 			}else{
+	 			$this->session->set_flashdata('error', 'Konfirmasi password baru tidak sesuai');
+ 			}
  		}	
+ 		redirect(site_url().'/settings');
  	}
  	
  	public function setUser($id)

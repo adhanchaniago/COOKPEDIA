@@ -14,7 +14,7 @@
 
     <style>
       #txt {
-        font-size: 30px;
+        font-size: 22px;
         font-family: 'Encode Sans Condensed', sans-serif;
         letter-spacing: 0.5px;
         line-height: 1.5s;
@@ -41,8 +41,8 @@
         <span class="navbar-toggler-icon"></span> </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto" id="loto">
-              <li><a class="nav-link active" href="<?php echo site_url()?>/pegawai">What's New<span class="sr-only">(current)</span></a></li>
-              <li><a class="nav-link" href="<?php echo site_url()?>/about">About<span class="sr-only">(current)</span></a></li>
+              <li><a class="nav-link" href="<?php echo site_url()?>/home">What's New<span class="sr-only">(current)</span></a></li>
+              <li><a class="nav-link active" href="<?php echo site_url()?>/about">About<span class="sr-only">(current)</span></a></li>
           </ul>
 
           <div class="dropdown nav navbar-nav navbar-right">

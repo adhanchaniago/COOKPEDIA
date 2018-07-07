@@ -60,10 +60,6 @@ $acl = array(
 	'login/index' => array(
 		'public'
 	),
-	'pegawai' => array(
-		'user' => true,
-		'admin' => true,
-	),
 	'about' => array(
 		'user' => true,
 		'admin' => true,

@@ -26,7 +26,7 @@
       padding-top: 40px;
       padding-bottom: 40px;
       padding-left: 100px;
-      background-image: url('../assets/imgdesign/bg-login.jpg');
+      background-image: url('<?=base_url()?>/assets/imgdesign/bg-login.jpg');
       background-size:cover;
       background-position:center;
       background-repeat:no-repeat;
@@ -92,8 +92,8 @@
           <input type="email" name="email" id="email" class="form-control" placeholder="Email" autofocus>
           <label for="password" class="sr-only">Password</label>
           <input type="password" name="password" id="password" class="form-control" placeholder="Password">
-          <button type="submit" class="btn btn-block btn-lg btn-outline-success">Sign In</button>
-          <a href="<?php echo base_url('index.php/Login/register') ?>" class="btn btn-block btn-lg btn-outline-primary">Sign up</a> 
+          <button type="submit" class="btn btn-block btn-lg btn-success">Sign In</button>
+          <a href="<?php echo base_url('index.php/Login/register') ?>" class="btn btn-block btn-lg btn-primary">Sign up</a> 
         </div>
       </form>
     

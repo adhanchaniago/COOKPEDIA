@@ -11,7 +11,6 @@
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Skranji|Encode+Sans+Condensed|Lato:700" rel="stylesheet">
     <!-- End of Google font -->
-
     <style>
       #txt {
         font-size: 30px;
@@ -32,8 +31,26 @@
       }
 
     </style>
+    <script>
+      function startTime() {
+          var today = new Date();
+          var h = today.getHours();
+          var m = today.getMinutes();
+          var s = today.getSeconds();
+          m = checkTime(m);
+          s = checkTime(s);
+          document.getElementById('clock').innerHTML =
+          h + ":" + m + ":" + s;
+          var t = setTimeout(startTime, 500);
+      }
+      function checkTime(i) {
+          if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+          return i;
+    }
+    </script>
+
   </head>
-  <body>
+  <body onload="startTime()">
     <div id="logo">
       <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" style="text-align: center;">
         <a class="navbar-brand" href="<?php echo site_url()?>/home">Cookpedia</a>
@@ -41,7 +58,7 @@
         <span class="navbar-toggler-icon"></span> </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto" id="loto">
-              <li><a class="nav-link active" href="<?php echo site_url()?>/pegawai">What's New<span class="sr-only">(current)</span></a></li>
+              <li><a class="nav-link active" href="<?php echo site_url()?>/home">What's New<span class="sr-only">(current)</span></a></li>
               <li><a class="nav-link" href="<?php echo site_url()?>/about">About<span class="sr-only">(current)</span></a></li>
           </ul>
 
@@ -64,19 +81,28 @@
         </div>
       </nav> <!-- End of Navbar -->
     </div>
-    
+    <div class="container" style="margin-top:70px">
+      <?php if($error = $this->session->flashdata('error')){ ?>
+              <div class="alert alert-warning" role="alert">
+                <?=$error?>
+              </div>
+      <?php } ?>
+      <?php if($success = $this->session->flashdata('success')){ ?>
+              <div class="alert alert-success" role="alert">
+                <?=$success?>
+              </div>
+      <?php } ?>
     <div id="txt">
-      <div class="container" style="margin-top:70px">
         <div class="row">
-          <div class="col-sm-4 text-capitalize" style="text-align: center;">
-            <!-- <img src="../assets/imgdesign/user/avatar1.png" style="width: 350px"> -->
-            <?php foreach ($userdt as $key => $value): 
-              if ($value['id'] == $this->session->userdata('logged_in')['id'] ) {  
-                  echo $value['username']; ?>  
-                  <img src="http://localhost/cookpedia/assets/uploads/<?php echo $value['photo']?>">
-              <?php } endforeach ?>
+          <div class="col-sm-4 text-capitalize" style="text-align: center; margin-top:50px">
+              <div id="clock"></div>
+              <?php if ($value['photo']==NULL) {?>
+                <img src="<?=base_url()?>/assets/imgdesign/user/avatar1.png" style="width: 350px; height: 350px">
+              <?php } else {?> 
+                <img src="<?=base_url()?>assets/uploads/<?php echo $value['photo']?>" style="width: 350px; height: 350px">
+              <?php } ?>
             <br>
-            <kbd><?php echo $this->session->userdata('logged_in')['status']; ?></kbd>
+            <kbd><?php echo $value['status']; ?></kbd>
           </div>
           <div class="col-sm-8">
             <!-- Nav tabs -->
@@ -100,9 +126,7 @@
                 <!-- Data From User -->
                 <table class="table table-hover table-inverse lead">
                   <tbody>  
-                    <?php foreach ($userdt as $key => $value): 
-                      if ($value['id'] == $this->session->userdata('logged_in')['id'] ) {   
-                      ?>
+                    
                     <tr>
                       <td width="17%">Nama</td>
                       <td width="1%">:</td>
@@ -138,7 +162,6 @@
                         <a href="<?php echo site_url()?>/settings/setUser/<?php echo $value['id']?>" class="btn btn-block btn-outline-info">Edit</a>
                       </td>
                     </tr>
-                    <?php } endforeach ?>
                   </tbody>
                 </table>
               
@@ -152,9 +175,9 @@
                 <p class="lead">
                   <form class="form-signin" method="post" action="<?php echo base_url('index.php/Settings/changePassword') ?>">
                     <div id="txt">
-                      <?php echo validation_errors(); ?>
                       <label for="old_password" class="sr-only">Old Password</label>
                       <input type="password" name="old_password" id="old_password" class="form-control" placeholder="Old Password.." autofocus>
+                      <input type="hidden" name="id_user" id="id_user" class="form-control"  value="<?=$value['id']?>">
                       <label for="new_password" class="sr-only">New Password</label>
                       <input type="password" name="new_password" id="new_password" class="form-control" placeholder="New Password..">
                       <label for="confirm_new_password" class="sr-only">Confirm Password</label>
@@ -178,5 +201,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="../assets/dist/js/bootstrap.min.js"></script>
+    <script src="<?=base_url()?>assets/growl/js/jquery.growl.js"></script>
   </body>
 </html>

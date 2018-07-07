@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Cookpedia | Home</title>
+    <title>Cookpedia | About</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../assets/dist/css/bootstrap.min.css">
@@ -14,7 +14,7 @@
 
     <style>
       #txt {
-        font-size: 30px;
+        font-size: 17px;
         font-family: 'Encode Sans Condensed', sans-serif;
         letter-spacing: 0.5px;
         line-height: 1.5s;
@@ -41,10 +41,9 @@
         <span class="navbar-toggler-icon"></span> </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto" id="loto">
-              <li><a class="nav-link active" href="<?php echo site_url()?>/pegawai">What's New<span class="sr-only">(current)</span></a></li>
+              <li><a class="nav-link active" href="<?php echo site_url()?>/home">What's New<span class="sr-only">(current)</span></a></li>
               <li><a class="nav-link" href="<?php echo site_url()?>/about">About<span class="sr-only">(current)</span></a></li>
           </ul>
-
           <div class="dropdown nav navbar-nav navbar-right">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
               <img src="../assets/imgdesign/user/avatar1.png" alt="logo" style="width:30px;">
@@ -66,11 +65,11 @@
     </div>
     
     <div id="txt">
-      <div class="container" style="margin-top:70px">
-        <div class="display-1" style="text-align: center;">
-          COMING SOON!
+      <div class="container" style="margin-top:70px;">
+        <div class="display-4" style="text-align: center;">
+          home
         </div>
-      </div>     
+      </div>
     </div>  
         
 

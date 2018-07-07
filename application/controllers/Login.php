@@ -26,7 +26,7 @@
  	{
  		$this->load->library('form_validation');
 
- 		$this->form_validation->set_rules('email','Username','trim|required');
+ 		$this->form_validation->set_rules('username','Username','trim|required');
  		$this->form_validation->set_rules('email','Email','trim|required');
  		$this->form_validation->set_rules('password','Password','trim|required');
  		if ($this->form_validation->run() == FALSE) {
@@ -59,7 +59,15 @@
  				);
  				$this->session->set_userdata('logged_in',$sess_array);
  			}
+ 			$sesID = $this->session->userdata('logged_in');
+ 			$total_access = $this->db->select('total_access')->where('id',$sesID['id'])->get('users')->row_array();
+ 			$data = array (
+ 				'last_access' => date('Y-m-d H:i:s'),
+ 				'total_access' => $total_access['total_access']+1
+ 			);
+ 			$this->db->where('id',$sesID['id'])->set($data)->update('users');
 
+ 			// print_r($return); die();
  			return true;
 
  		}
