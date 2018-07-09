@@ -1,7 +1,7 @@
 $(function() {
   $.ajax({
     type: "GET",
-    url: "getAllRental/"
+    url: "getAllAkun/"
   }).done(function(countries) {
     countries.unshift({ id: "0", name: "" });
 
@@ -21,28 +21,28 @@ $(function() {
         loadData: function(filter) {
           return $.ajax({
             type: "GET",
-            url: "getAllRental/",
+            url: "getAllAkun/",
             data: filter
           });
         },
         insertItem: function(item) {
           return $.ajax({
             type: "POST",
-            url: "addRental/",
+            url: "addAkun/",
             data: item
           });
         },
         updateItem: function(item) {
           return $.ajax({
             type: "POST",
-            url: "updateRental/",
+            url: "updateAkun/",
             data: item
           });
         },
         deleteItem: function(item) {
           return $.ajax({
             type: "POST",
-            url: "deleteRental/",
+            url: "deleteAkun/",
             data: item
           });
         }
@@ -55,32 +55,44 @@ $(function() {
           width: 15
         },
         {
-          name: "member",
-          title: "Member",
+          name: "email",
+          title: "Email",
           type: "text",
           width: 50
         },
         {
-          name: "judulfilm",
-          title: "Judul Film",
+          name: "username",
+          title: "Username",
           type: "text",
           width: 150
         },
         {
-          name: "tglpinjam",
-          title: "Tanggal Pinjam",
+          name: "password",
+          title: "Passwoed",
           type: "text",
           width: 150
         },
         {
-          name: "tglkembali",
-          title: "Tanggal Kembali",
+          name: "gender",
+          title: "Gender",
           type: "text",
           width: 150
         },
         {
-          name: "harga",
-          title: "Harga",
+          name: "phone",
+          title: "Phone",
+          type: "text",
+          width: 150
+        },
+        {
+          name: "status",
+          title: "Status",
+          type: "text",
+          width: 150
+        },
+        {
+          name: "photo",
+          title: "Photo",
           type: "text",
           width: 150
         },

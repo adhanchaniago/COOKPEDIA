@@ -21,5 +21,33 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('home.php');
 	}
-	
+	public function gridDinamis()
+    {
+        $this->load->view('GridDinamisView');
+    }
+
+    public function getAllAkun()
+    {
+        $this->load->model('Akun_model');
+        $result = $this->Akun_model->getAllAkun(); 
+        header("Content-Type: application/json");
+        echo json_encode($result);
+    }
+ 
+    public function addAkun(){
+      $this->load->model('Akun_model');
+        $this->Akun_model->save();
+    }
+
+    public function deleteAkun()
+    {
+        $this->load->model('Akun_model');
+        $id = $this->input->post('id'); 
+        $this->Akun_model->delete($id);
+    }
+
+     public function updateAkun(){
+      $this->load->model('Akun_model');
+        $this->Akun_model->updateAkun();
+	}
 }
