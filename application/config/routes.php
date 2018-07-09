@@ -56,4 +56,3 @@ $route['home'] = 'pageControllers';
 $route['getAllAkun'] = 'Home/getAllAkun';
 $route['addAkun'] = 'Home/addAkun';
 $route['updateAkun'] = 'Home/updateAkun';
-
