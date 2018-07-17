@@ -7,7 +7,7 @@
     <title>Cookpedia | Home</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../assets/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/dist/css/bootstrap.min.css">  
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Skranji|Encode+Sans+Condensed|Lato:700" rel="stylesheet">
     <!-- End of Google font -->
@@ -73,10 +73,21 @@
           Check what you like..
         </div>
         <div>
-          <div class="card" style="max-width: 25%">
-            <div class="card-header">Header</div>
-            <div class="card-body">Content</div> 
-            <div class="card-footer">Footer</div>
+            <div class="row">
+          <?php $recipes= $this->db->get('recipes');
+          foreach($recipes->result() AS $row){?>
+
+            <div class="col-sm-3">
+              <div class="card">
+                <img class="card-img-top" src="<?=base_url().'assets/uploads/'.$row->photo?>" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title"><?=$row->title?></h5>
+                  <p class="card-text"><?=$row->descripction ;?></p>
+                  <a href="#" class="btn btn-primary">read more..</a>
+                </div>
+              </div>
+            </div>
+          <?php }?>
           </div>
         </div>
       </div>
