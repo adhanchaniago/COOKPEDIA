@@ -30,18 +30,12 @@
 	 	public function insert()
 	 	{
 	 		$data = array(
-	 			'username' => $this->input->post('username'),
-	 			'email'	=> $this->input->post('email'),
-	 			'password' => md5($this->input->post('password')),
-	 			'status' => $this->input='user'
+	 			'username' 	=> $this->input->post('username'),
+	 			'email'		=> $this->input->post('email'),
+	 			'password'	=> md5($this->input->post('password')),
+	 			'status' 	=> $this->input='user'
 	 		);
 	 		$this->db->insert('users',$data);
-	 	}
-
-	 	//pending
-	 	public function changePassword($old_password)
-	 	{
-	 		
 	 	}
 
 		public function getUserbyId($id)
@@ -54,16 +48,35 @@
 	 	public function setUserbyId($id)
 		{
 			$data = array(
-				'username' => $this->input->post('username'),
-				'email' => $this->input->post('email'),
-				'gender' => $this->input->post('gender'),
-				'phone' => $this->input->post('phone'),
-				'photo' => $this->upload->data('file_name'),
+				'username' 	=> $this->input->post('username'),
+				'email' 	=> $this->input->post('email'),
+				'gender' 	=> $this->input->post('gender'),
+				'phone' 	=> $this->input->post('phone'),
+				'photo' 	=> $this->upload->data('file_name'),
 
 			);
 			$this->db->where('id', $id);
 			$this->db->update('users', $data);
 		}
+
+		public function insertRecipe()
+	 	{
+	 		$data = array(
+
+	 			'title' 		=> $this->input->post('title'),
+	 			'author'		=> $this->input->post('author'),
+	 			'descripction'	=> $this->input->post('descripction'),
+	 			'portion'		=> $this->input->post('portion'),
+	 			'duration'		=> $this->input->post('duration'),
+	 			'steps'			=> $this->input->post('steps'),
+	 			'ingredients'	=> $this->input->post('ingredients'),
+	 			'photo' 		=> $this->upload->data('file_name'),
+
+	 			// 'status' 	=> $this->input='user'
+	 		);
+	 		$this->db->insert('recipes',$data);
+	 	}
+	 	
 	 }
 
 	 	// public function editUser()

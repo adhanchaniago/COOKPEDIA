@@ -35,7 +35,6 @@
  		$this->load->view('settings', $data);
  	}
 
- 	// Pending
  	public function changePassword()
  	{
  		$this->load->library('form_validation');
@@ -94,7 +93,6 @@
 			else
 			{
 				$this->user->setUserbyId($id);
-				//$this->load->view('editUser_view');
 				redirect('settings','refresh');
 
 			}

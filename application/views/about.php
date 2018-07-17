@@ -36,12 +36,12 @@
   <body>
     <div id="logo">
       <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" style="text-align: center;">
-        <a class="navbar-brand" href="<?php echo site_url()?>/home">Cookpedia</a>
+        <a class="navbar-brand" href="<?php echo site_url()?>/Home">Cookpedia</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span> </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto" id="loto">
-              <li><a class="nav-link" href="<?php echo site_url()?>/home">What's New<span class="sr-only">(current)</span></a></li>
+              <li><a class="nav-link" href="<?php echo site_url()?>/Home">What's New<span class="sr-only">(current)</span></a></li>
               <li><a class="nav-link active" href="<?php echo site_url()?>/about">About<span class="sr-only">(current)</span></a></li>
           </ul>
 

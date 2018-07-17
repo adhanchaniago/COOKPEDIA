@@ -72,6 +72,10 @@ $acl = array(
 		'user' => false,
 		'admin' => true,
 	),
+	'recipe' => array(
+		'user' => true,
+		'admin' => true,
+	),
 
 
 );

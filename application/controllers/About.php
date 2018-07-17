@@ -17,7 +17,7 @@
  				if (! $this->acl->is_allowed($current_controller, $data['status']))
  				{
  					echo '<script>alert("Anda Tidak Memiliki Hak Akses")</script>';
- 					redirect('pegawai','refresh');
+ 					redirect('login','refresh');
  				}
  			}
  		}else{
