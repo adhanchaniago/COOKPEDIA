@@ -47,11 +47,11 @@
 
           <div class="dropdown nav navbar-nav navbar-right">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-              <img src="../assets/imgdesign/user/avatar1.png" alt="logo" style="width:30px;">
+              <img src="../assets/uploads/<?php echo $value['photo']; ?>" alt="logo" style="width:30px;"> 
                 <?php echo $this->session->userdata('logged_in')['username']; ?><span class="sr-only">(current)</span>
             </button>
             <div class="dropdown-menu" id="loto">
-              <a class="dropdown-item" href="<?php echo site_url()?>/grafik">Coming Soon</a>
+              <a class="dropdown-item" href="<?php echo site_url()?>/grafik">Grafik Login</a>
               <a class="dropdown-item">
                 <?php if($this->session->userdata('logged_in')['status'] == 'admin') { 
                   echo '<li><a class="nav-link" href="site_url()/grafik"><font color="#6611AA"> 

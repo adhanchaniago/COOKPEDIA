@@ -26,7 +26,7 @@
  			redirect('login','refresh');
  		}
  	}
-
+ 				
  	public function Index()
  	{
  		$session_data=$this->session->userdata('logged_in');
@@ -99,6 +99,15 @@
 		}		
  		
  	}
+
+ 	public function deleteRecipe($id)
+	{
+		$this->load->helper("url");
+		$this->load->model("user");
+		$this->user->deleteRecipe($id);
+		redirect('settings');
+	}
+
  }
  
  /* End of file Settings.php */

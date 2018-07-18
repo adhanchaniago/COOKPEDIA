@@ -19,7 +19,17 @@ class Recipe extends CI_Controller {
  	}
 	public function index()
 	{
-		$this->load->view('setRecipe_view.php');
+		$this->load->model('user');
+        $data['value'] = $this->db->where('id', $this->session->userdata('logged_in')['id'])->get('users')->row_array();
+		$this->load->view('setRecipe_view',$data);
+	}
+
+	public function getRecipebyId($id)
+	{
+		$this->load->model('user');
+        $data['value'] = $this->db->where('id', $this->session->userdata('logged_in')['id'])->get('users')->row_array();
+        $data['recipe'] = $this->db->where('id', $id)->get('recipes')->row_array();
+		$this->load->view('getRecipe_view',$data);
 	}
 
 	public function setRecipe()
@@ -55,5 +65,7 @@ class Recipe extends CI_Controller {
 			}	
  		}
 	}
+
+
 	
 }

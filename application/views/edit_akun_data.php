@@ -35,7 +35,7 @@
 <?php 
 	echo "Sukses Simpan Data";
 
-	echo anchor('users', 'Masukan Data Lagi'); 
+	echo anchor('akun', 'Masukan Data Lagi'); 
 ?>
 
  <!-- Bootstrap core JavaScript

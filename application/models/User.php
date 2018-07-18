@@ -76,6 +76,20 @@
 	 		);
 	 		$this->db->insert('recipes',$data);
 	 	}
+
+	 	public function getRecipebyId($id)
+		{
+			$this->db->where('id', $id);
+			$query = $this->db->get('recipes');
+			return $query->result();
+		}
+
+		public function deleteRecipe($id)
+		{ 
+        	if ($this->db->delete("recipes", "id = ".$id)) { 
+            return true; 
+        	}
+    	}
 	 	
 	 }
 

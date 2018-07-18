@@ -29,6 +29,11 @@
         font-family: 'Lato', sans-serif;
         text-align: center;
       }
+      .ss {
+        font-size: 10px;
+        font-family: 'Lato', sans-serif;
+        text-align: center;
+      }
 
     </style>
     <script>
@@ -64,11 +69,11 @@
 
           <div class="dropdown nav navbar-nav navbar-right">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-              <img src="../assets/imgdesign/user/avatar1.png" alt="logo" style="width:30px;">
+              <img src="../assets/uploads/<?php echo $value['photo']; ?>" alt="logo" style="width:30px;"> 
                 <?php echo $this->session->userdata('logged_in')['username']; ?><span class="sr-only">(current)</span>
             </button>
             <div class="dropdown-menu" id="loto">
-              <a class="dropdown-item" href="<?php echo site_url()?>/grafik">Coming Soon</a>
+              <a class="dropdown-item" href="<?php echo site_url()?>/grafik">Grafik Login</a>
               <a class="dropdown-item">
                 <?php if($this->session->userdata('logged_in')['status'] == 'admin') { 
                   echo '<li><a class="nav-link" href="site_url()/grafik"><font color="#6611AA"> 
@@ -135,7 +140,7 @@
                     <tr>
                       <td>Email</td>
                       <td>:</td>
-                      <td><?php echo $value['email']; ?></td>
+                      <td><?php echo $value['email']; ?> </td>
                     </tr>
                     <tr>
                       <td>Gender</td>
@@ -167,8 +172,32 @@
               
               </div>
               <div id="recipe" class="container tab-pane fade"><br>
-                <h3>Menu 1</h3>
-                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <div class="row lead">
+                  <?php $recipes= $this->db->where('author',$value['id'])->get('recipes');
+                    foreach($recipes->result() AS $row){?>
+                    <div class="col-sm-12">
+                      <table class="table table-responsive table-inverse">
+                        <thead>
+                          <tr>
+                            <th width="10%">ID</th>
+                            <th width="70%">Title</th>
+                            <th width="20%">Photo</th>
+                            <th width="10%">Action</th>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><?=$row->id?></td>
+                            <td><?=$row->title?></td>
+                            <td><img style="max-width: 100%" src="<?=base_url().'assets/uploads/'.$row->photo ?>"></td>
+                            <td>
+                              <a href="<?=site_url() . '/settings/deleteRecipe/'. $row->id?>" class="btn btn-sm btn-danger"> <i class="glyphicon glyphicon-trash"> Delete</i></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  <?php }?>
+                </div>
               </div>
               <div id="chgpass" class="container tab-pane fade"><br>
                 Silahkan Masukkan Password Lama dan Password Baru Anda..

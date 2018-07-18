@@ -2,7 +2,7 @@
 <html>
 <head>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-      <a class="navbar-brand" href="#">Data Akun</a>
+      <a class="navbar-brand" href="<?=site_url()?>/Home">Home</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -11,8 +11,7 @@
           <li >
             <a class="nav-link" href="<?php echo site_url() ?>/Akun">CRUD</a></li>
             <li class="nav-item active"> <a class="nav-link" href="<?php echo site_url() ?>/Home/gridDinamis">JS GRID</a></LI>
-             <!-- // satu baris ini gantien :D ganti ke semua view a iyooo  ok?okk komen in dong ok! save eh ndutt ini sebaris tok di copy kan ga ada slice apa slice apa
-            iyo satu baris ini gantien yang home ini tak tunjukin siap a?siap -->
+            <LI> <a class="nav-link" href="<?php echo site_url() ?>/users">Paging</a></LI>
           </li>
         </ul>
       </div>

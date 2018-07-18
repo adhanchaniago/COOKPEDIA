@@ -49,14 +49,14 @@
           </div>
           <div class="dropdown nav navbar-nav navbar-right">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-              <img src="../assets/imgdesign/user/avatar1.png" alt="logo" style="width:30px;">
+              <img src="../assets/uploads/<?php echo $value['photo']; ?>" alt="logo" style="width:30px;"> 
                 <?php echo $this->session->userdata('logged_in')['username']; ?><span class="sr-only">(current)</span>
             </button>
             <div class="dropdown-menu" id="loto">
-              <a class="dropdown-item" href="<?php echo site_url()?>/grafik">Coming Soon</a>
+              <a class="dropdown-item" href="<?php echo site_url()?>/grafik">Grafik Login</a>
               <a class="dropdown-item">
                 <?php if($this->session->userdata('logged_in')['status'] == 'admin') { 
-                  echo '<li><a class="nav-link" href="site_url()/grafik"><font color="#6611AA"> 
+                  echo '<li><a class="nav-link" href="http://localhost/cookpedia/index.php/akun"><font color="#6611AA"> 
                         <b>Dashboard Admin</b></font><span class="sr-only">(current)</span></a>'; } ?>
               </a>
               <a class="dropdown-item" href="<?php echo site_url()?>/settings">Settings</a>
@@ -73,21 +73,21 @@
           Check what you like..
         </div>
         <div>
-            <div class="row">
-          <?php $recipes= $this->db->get('recipes');
-          foreach($recipes->result() AS $row){?>
+          <div class="row">
+            <?php $recipes= $this->db->get('recipes');
+            foreach($recipes->result() AS $row){?>
 
-            <div class="col-sm-3">
-              <div class="card">
-                <img class="card-img-top" src="<?=base_url().'assets/uploads/'.$row->photo?>" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title"><?=$row->title?></h5>
-                  <p class="card-text"><?=$row->descripction ;?></p>
-                  <a href="#" class="btn btn-primary">read more..</a>
+              <div class="col-sm-3">
+                <div class="card">
+                  <img class="card-img-top" src="<?=base_url().'assets/uploads/'.$row->photo?>" alt="Card image cap" style="max-width: 255px;">
+                  <div class="card-body">
+                    <h5 class="card-title"><?=$row->title?></h5>
+                    <p class="card-text"><?=$row->descripction;?></p>
+                    <a href="<?=site_url()?>/recipe/getRecipebyId/<?=$row->id ?>" class="btn btn-primary">read more..</a>
+                  </div>
                 </div>
               </div>
-            </div>
-          <?php }?>
+            <?php }?>
           </div>
         </div>
       </div>

@@ -19,7 +19,9 @@ class Home extends CI_Controller {
  	}
 	public function index()
 	{
-		$this->load->view('home.php');
+        $this->load->model('user');
+        $data['value'] = $this->db->where('id', $this->session->userdata('logged_in')['id'])->get('users')->row_array();
+        $this->load->view('home', $data);
 	}
 	public function gridDinamis()
     {

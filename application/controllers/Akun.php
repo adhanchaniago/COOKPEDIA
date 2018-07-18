@@ -22,7 +22,6 @@ class Akun extends CI_Controller {
 		$this->form_validation->set_rules('gender', 'Gender', 'trim|required');
 		$this->form_validation->set_rules('phone', 'Phone', 'trim|required');
 		$this->form_validation->set_rules('status', 'Status', 'trim|required');
-		$this->form_validation->set_rules('photo', 'Photo', 'trim|required');
 		
 
 		if ($this->form_validation->run()==FALSE)
@@ -48,7 +47,6 @@ class Akun extends CI_Controller {
 		$this->form_validation->set_rules('gender', 'Gender', 'trim|required');
 		$this->form_validation->set_rules('phone', 'Phone', 'trim|required');
 		$this->form_validation->set_rules('status', 'Status', 'trim|required');
-		$this->form_validation->set_rules('photo', 'Photo', 'trim|required');
 
 
 
@@ -71,7 +69,7 @@ class Akun extends CI_Controller {
 		$this->load->helper("url");
 		$this->load->model("Akun_model");
 		$this->Akun_model->delete($id);
-		redirect('users');
+		redirect('akun'); //users
 	}
 }
 

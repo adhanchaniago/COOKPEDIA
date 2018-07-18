@@ -30,6 +30,8 @@
  	{
  		$session_data=$this->session->userdata('logged_in');
  		$x['data']=$this->M_grafik->get_data_stok();
+ 		$this->load->model('user');
+        $x['value'] = $this->db->where('id', $this->session->userdata('logged_in')['id'])->get('users')->row_array();
         $this->load->view('v_grafik',$x);
  	}
  

@@ -59,10 +59,6 @@
     <label for="">Status</label>
     <input type="text" class="form-control" name="status" id="status" value="<?php echo $akun[0]->status ?>" placeholder="Input field">
   </div>
-  <div class="form-group">
-    <label for="">Photo</label>
-    <input type="text" class="form-control" name="photo" id="photo" value="<?php echo $akun[0]->photo ?>" placeholder="Input field">
-  </div>
 	<button type="submit" class="btn btn-primary">Submit</button>
 	<?php echo form_close(); ?>
 </div>

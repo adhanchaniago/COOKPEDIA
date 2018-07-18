@@ -4,10 +4,10 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Cookpedia | Settings</title>
+    <title>Cookpedia | Recipe</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../assets/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Skranji|Encode+Sans+Condensed|Lato:700" rel="stylesheet">
     <!-- End of Google font -->
@@ -47,7 +47,7 @@
 
           <div class="dropdown nav navbar-nav navbar-right">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-              <img src="../assets/uploads/<?php echo $value['photo']; ?>" alt="logo" style="width:30px;"> 
+              <img src="<?=base_url().'/assets/uploads/'.$value['photo']; ?>" alt="logo" style="width:30px;"> 
                 <?php echo $this->session->userdata('logged_in')['username']; ?><span class="sr-only">(current)</span>
             </button>
             <div class="dropdown-menu" id="loto">
@@ -65,29 +65,39 @@
       </nav> <!-- End of Navbar -->
     </div>
     <div class="container-fluid" style="margin-top:70px">
-      <?php if($error = $this->session->flashdata('error')){ ?>
-              <div class="alert alert-warning" role="alert">
-                <?=$error?>
-              </div>
-      <?php } ?>
-      <?php if($success = $this->session->flashdata('success')){ ?>
-              <div class="alert alert-success" role="alert">
-                <?=$success?>
-              </div>
-      <?php } ?>
       <div id="txt">
-        <div class="row">
-          <div class="col-sm-4 text-capitalize" style="text-align: center;">
-              OK SIAP
+        <div class="row" style="padding-left: 15%; padding-right: 15%;">
+          <div class="col-sm-12">
+            <div>
+              <div>
+                <center><img src="<?=base_url().'/assets/uploads/'.$recipe['photo']; ?>" style="width:450px;"></center>
+              </div>
+              <div>
+                <h1 style="color: green;"><b>Resep <?=$recipe['title'] ?></b></h1> 
+                <hr class="m-sm-2">
+              </div>
+              <div>
+                <?=$recipe['descripction'] ?>
+                <br><br>
+              </div>
+              <div>
+                <h4 style="text-align: right; color: grey;"> 
+                  <?=$recipe['portion']  . ' Porsi dibuat selama ' . $recipe['duration'] .' menit' ?>
+                    
+                </h4>
+                <h2 style="color: grey;"> Bahan Bahan</h2>  
+                <?=$recipe['ingredients'] ?>
+                <br><br>
+              </div>
+              <div>
+                <h2 style="color: grey;"> Langkah</h2>
+                <?=$recipe['steps'] ?>
+                <br><br>
+              </div>
+              <a href="<?php echo site_url()?>/Home" class="btn btn-outline-secondary btn-block">Kembali</a> <br><br>
+            </div>   
           </div>
-          <div class="col-sm-8">
-             COL KE 2
-    
-          </div>  
-        </div> <!-- End of class row --> 
-        <div class="row">
-          row ke2
-        </div> 
+        </div> <!-- End of class row -->
       </div>     
     </div>  
         
@@ -96,7 +106,7 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="../assets/dist/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     <script src="<?=base_url()?>assets/growl/js/jquery.growl.js"></script>
   </body>
 </html>

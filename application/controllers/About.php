@@ -29,6 +29,8 @@
  	{
  		$session_data=$this->session->userdata('logged_in');
  		$data['username']=$session_data['username'];
+ 		$this->load->model('user');
+ 		$data['value'] = $this->db->where('id', $this->session->userdata('logged_in')['id'])->get('users')->row_array();
  		$this->load->view('about',$data);
  	}
  

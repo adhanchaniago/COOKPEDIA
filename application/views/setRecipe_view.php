@@ -7,7 +7,7 @@
     <title>Cookpedia | Settings</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../assets/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Skranji|Encode+Sans+Condensed|Lato:700" rel="stylesheet">
     <!-- End of Google font -->
@@ -47,11 +47,11 @@
 
           <div class="dropdown nav navbar-nav navbar-right">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-              <img src="../assets/imgdesign/user/avatar1.png" alt="logo" style="width:30px;">
+              <img src="<?=base_url().'/assets/uploads/'.$value['photo']; ?>" alt="logo" style="width:30px;">
                 <?php echo $this->session->userdata('logged_in')['username']; ?><span class="sr-only">(current)</span>
             </button>
             <div class="dropdown-menu" id="loto">
-              <a class="dropdown-item" href="<?php echo site_url()?>/grafik">Coming Soon</a>
+              <a class="dropdown-item" href="<?php echo site_url()?>/grafik">Grafik Login</a>
               <a class="dropdown-item">
                 <?php if($this->session->userdata('logged_in')['status'] == 'admin') { 
                   echo '<li><a class="nav-link" href="site_url()/grafik"><font color="#6611AA"> 
@@ -97,8 +97,7 @@
 		          	Information recipe
 		          	<hr class="m-sm-2">
 		          	<div class="form-group">
-		          		author
-			        	<input type="text" class="form-control" name="author" id="author" value="<?php echo $this->session->userdata('logged_in')['id']?>" placeholder=" ">
+			        	<input type="hidden" class="form-control" name="author" id="author" value="<?php echo $this->session->userdata('logged_in')['id']?>" placeholder=" ">
 			    	</div>
 					<div class="form-group">
 				    	<label for="title">Title</label>
@@ -142,7 +141,7 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="../assets/dist/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     <script src="<?=base_url()?>assets/growl/js/jquery.growl.js"></script>
   </body>
 </html>

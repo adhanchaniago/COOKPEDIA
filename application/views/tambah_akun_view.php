@@ -49,8 +49,6 @@
         <input type="text" class="form-control" name="phone" placeholder="Input field">
         <label for="">Status</label>
         <input type="text" class="form-control" name="status" placeholder="Input field">
-        <label for="">Photo</label>
-        <input type="text" class="form-control" name="photo" placeholder="Input field">
 
 
       </div>
